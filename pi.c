@@ -3,21 +3,26 @@
 #include <stdlib.h>
 
 
-int main(void)
+int main(int argc, char *argv[])
 {
+	if(argc==1){
+		fprintf(stderr,"Please provide an argument, which is the weigh to the main mass, secondary mass is 1kg\n");
+		return -1;
+	}
+	if(argc>2){
+		fprintf(stderr,"Please provide only one argument\n");
+		return -1;
+	}
 	unsigned long long  main_mass=10;
 	int ratio, secondary_mass=1;
 	double main_vel=1, secondary_vel=0, vcm;
 	unsigned long  collisions=0;
-	do
-	{
-		printf("enter the weight of the main mass(positive), the secondary mass is 1kg");
-		scanf("%d",&ratio);
-		main_mass=pow(100,ratio);
+	ratio=atoi(argv[1]);
+	if(ratio<=0){
+		fprintf(stderr,"Please provide a correct, positive number\n");
+		return -1;
 	}
-	while(ratio<0);
-
-
+	main_mass=pow(100,ratio);
 	do
 	{
 		//cubes collide
@@ -32,7 +37,7 @@ int main(void)
 
 	}
 	while( secondary_vel < main_vel ||( secondary_vel>0 && main_vel > 0));
-	printf("%lu collisions\n",collisions);
+	printf("There are %lu collisions\n",collisions);
 
 	return 0;
 
