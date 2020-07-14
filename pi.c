@@ -22,9 +22,7 @@ int main(void)
 	{
 		//cubes collide
 		vcm = (main_mass*main_vel+secondary_mass*secondary_vel)/(main_mass+secondary_mass);
-//		printf("2*%f-%f=",vcm,main_vel);
 		main_vel = (2*vcm-main_vel);
-//		printf("%f\n",main_vel);
 		secondary_vel = 2*vcm-secondary_vel;
 		collisions++;
 		if(secondary_vel>0){
