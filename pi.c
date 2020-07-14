@@ -2,14 +2,6 @@
 #include <math.h>
 #include <stdlib.h>
 
-double pow(double x, double y);
-
-
-
-
-
-
-
 
 int main(void)
 {
